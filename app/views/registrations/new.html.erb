@@ -1,3 +1,24 @@
-<h1> Sign Up </h1>
+<h1>Sign Up</h1>
 
-<%=@user %>
+<!-- we are using url instead of using the user method or model -->
+
+<%= form_with model: @user, url: sign_up_path ,local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :email %> <!-- Correct syntax for label -->
+    <%= form.text_field :email, class: "form-control", placeholder: "youremail@.com" %>
+  </div> 
+
+  <div class="mb-3">
+    <%= form.label :password %> <!-- Correct syntax for label -->
+    <%= form.password_field :password, class: "form-control", placeholder: "password" %> <!-- Corrected spelling -->
+  </div> 
+
+  <div class="mb-3">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %> <!-- Corrected spelling -->
+  </div>
+  <div class="mb-3">
+
+  <%= form.submit "Sign Up", class: "btn btn-primary" %> <!-- Add a submit button -->
+  </div>
+<% end %>
