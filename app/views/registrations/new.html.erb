@@ -2,7 +2,18 @@
 
 <!-- we are using url instead of using the user method or model -->
 
-<%= form_with model: @user, url: sign_up_path ,local: true do |form| %>
+<%= form_with model: @user, url: sign_up_path ,local: true ,data: { turbo: false } do |form| %>
+<% if @user.errors.any? %>
+   <div class ="alert alert-danger">
+    <% @user.errors.full_messages.each do |message| %> 
+    <div><%=message%> </div>
+   <%end%>
+   </div>
+
+
+
+
+<% end %>
   <div class="mb-3">
     <%= form.label :email %> <!-- Correct syntax for label -->
     <%= form.text_field :email, class: "form-control", placeholder: "youremail@.com" %>

@@ -1,10 +1,28 @@
 class RegistrationsController < ApplicationController
   def new
-    #instance variable can be used in views(global when you add @)
     @user = User.new
   end  
+
   def create
-    redirect_to root_path, notice: "Account created successfully!"
+    @user=User.new(user_params)
+
+    if @user.save
+      redirect_to root_path, notice: "succesfully created"
+
+    else
+        flash[:alert]="something is wrong"
+        render :new
+    end
   end
-  
-end   
+
+  private 
+
+
+  def user_params
+    
+    params.require(:user).permit(:email,:password,:password_confirmation)
+  end
+
+
+
+end
