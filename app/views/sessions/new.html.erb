@@ -1,0 +1,30 @@
+<h1> Sign in </h1>
+
+
+
+
+<%= form_with url: sign_in_path, local: true do |form| %>
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+
+
+  <div class="mb-3">
+    <%= form.label :email %> <!-- Correct syntax for label -->
+    <%= form.text_field :email, class: "form-control", placeholder: "youremail@.com" %>
+  </div> 
+  <div class="mb-3">
+    <%= form.label :password %> <!-- Correct syntax for label -->
+    <%= form.password_field :password, class: "form-control", placeholder: "password" %> <!-- Corrected spelling -->
+  </div> 
+
+  <div class="mb-3">
+
+  <%= form.submit "Sign in", class: "btn btn-primary" %> <!-- Add a submit button -->
+  </div>
+<%end %>

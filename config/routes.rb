@@ -8,7 +8,15 @@ Rails.application.routes.draw do
 
   
   get "sign_up", to: "registrations#new"
+
   post "sign_up", to: "registrations#create"
+
+  delete "logout", to: "sessions#destroy"
+
+  get "sign_in", to: "sessions#new"
+
+  post "sign_in", to: "sessions#create"
+
   
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -22,3 +30,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 end
+      
